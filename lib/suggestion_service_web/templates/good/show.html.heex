@@ -1,0 +1,18 @@
+<h1>Show Good</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @good.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @good.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.good_path(@conn, :edit, @good) %></span> |
+<span><%= link "Back", to: Routes.good_path(@conn, :index) %></span>

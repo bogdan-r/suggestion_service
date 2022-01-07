@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: suggestion_postgres
+    image: postgres:13.4
+    networks:
+      - showcase-bridge
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+
+networks:
+  showcase-bridge:

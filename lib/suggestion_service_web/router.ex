@@ -25,6 +25,8 @@ defmodule SuggestionServiceWeb.Router do
   scope "/api", SuggestionServiceWeb.Api do
     pipe_through :api
     resources "/goods", GoodController, only: [:index]
+
+    get "/suggest", SuggestionController, :suggest
   end
 
   # Enables LiveDashboard only for development

@@ -1,7 +1,7 @@
 defmodule SuggestionServiceWeb.Api.SuggestionView do
   use SuggestionServiceWeb, :view
 
-  def render("suggestions.json", %{suggestions: suggestions}) do
+  def render("suggestion.json", %{suggestions: suggestions}) do
     %{
       data: Enum.map(suggestions, &render_suggestion_item/1)
     }

@@ -43,3 +43,13 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+const suggestionButton = document.querySelector("#suggestion_button");
+
+suggestionButton.addEventListener("click", (event) => {
+    const suggestionInput = document.querySelector("#suggestion_input");
+    event.preventDefault();
+    console.log(event.type);
+    console.log(suggestionInput.value);
+
+    fetch(`/api/suggest?q=${suggestionInput.value}`)
+})

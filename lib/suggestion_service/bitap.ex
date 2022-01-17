@@ -48,7 +48,7 @@ defmodule SuggestionService.Bitap do
     end)
   end
 
-  def fuzzy_search(haystack, needle_length, table, alphabet, max_errors, empty_column) do
+  defp fuzzy_search(haystack, needle_length, table, alphabet, max_errors, empty_column) do
     haystack_length = String.length(haystack)
 
     Enum.reduce_while(2..max_errors + 1, {"", -1, table}, fn k, {_, _, current_table} ->

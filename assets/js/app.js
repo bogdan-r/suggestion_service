@@ -22,15 +22,15 @@ import "../css/app.css"
 // Include phoenix_html to handle method=PUT/DELETE in forms and buttons.
 import "phoenix_html"
 // Establish Phoenix Socket and LiveView configuration.
-import {Socket} from "phoenix"
-import {LiveSocket} from "phoenix_live_view"
+import { Socket } from "phoenix"
+import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken } })
 
 // Show progress bar on live navigation and form submits
-topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
+topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
 window.addEventListener("phx:page-loading-start", info => topbar.show())
 window.addEventListener("phx:page-loading-stop", info => topbar.hide())
 
@@ -45,11 +45,25 @@ window.liveSocket = liveSocket
 
 const suggestionButton = document.querySelector("#suggestion_button");
 
+const buildHtml = (goods) => {
+    return goods.map((good) => {
+        return `<li><b>Название:</b> ${good.title} <br/> <b>Описание:</b> ${good.description}</li>`
+
+    }).join('')
+}
 suggestionButton.addEventListener("click", (event) => {
     const suggestionInput = document.querySelector("#suggestion_input");
+    const suggestionResult = document.querySelector("#suggestion_result");
     event.preventDefault();
     console.log(event.type);
     console.log(suggestionInput.value);
 
     fetch(`/api/suggest?q=${suggestionInput.value}`)
+        .then(res => res.json())
+        .then(json => {
+            const resultHtml = buildHtml(json.data);
+
+            suggestionResult.innerHTML = resultHtml;
+
+        })
 })

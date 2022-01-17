@@ -1,10 +1,10 @@
-<h1>Listing Goods</h1>
+<h1>Список товаров</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
+      <th>Название</th>
+      <th>Описание</th>
 
       <th></th>
     </tr>
@@ -16,13 +16,13 @@
       <td><%= good.description %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.good_path(@conn, :show, good) %></span>
-        <span><%= link "Edit", to: Routes.good_path(@conn, :edit, good) %></span>
-        <span><%= link "Delete", to: Routes.good_path(@conn, :delete, good), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link "Просмотр", to: Routes.good_path(@conn, :show, good) %></span>
+        <span><%= link "Редактирование", to: Routes.good_path(@conn, :edit, good) %></span>
+        <span><%= link "Удаление", to: Routes.good_path(@conn, :delete, good), method: :delete, data: [confirm: "Вы уверенны?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Good", to: Routes.good_path(@conn, :new) %></span>
+<span><%= link "Новый товар", to: Routes.good_path(@conn, :new) %></span>

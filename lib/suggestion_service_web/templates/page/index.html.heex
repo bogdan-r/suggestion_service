@@ -1,7 +1,9 @@
 <section class="phx-hero">
   <h1>Suggestion Service</h1>
 </section>
-
+<section class="row">
+  <span><%= link "Список товаров", to: Routes.good_path(@conn, :index) %></span>
+</section>
 <section class="row">
   <input type="text" placeholder="Input text" id="suggestion_input"/>
   <input type="button" value="Поиск" id="suggestion_button">
